@@ -7,15 +7,23 @@ import { useAuthStore } from "../store/useAuthStore";
 import { formatMessageTime } from "../lib/utils";
 
 const ChatContainer = () => {
-  const {messages, getMessages, isMessagesLoading, selectedUser} = useChatStore();
+  const { selectedUser, messages, getMessages, 
+    isMessagesLoading, subscribeToMessages, unsubscribeFromMessages } = useChatStore();
   const { authUser } = useAuthStore();
   const messageEndRef = useRef(null);
 
   useEffect(() => {
-    getMessages(selectedUser._id);
+    getMessages(selectedUser._id)
+    subscribeToMessages()
 
-  }, [selectedUser._id, getMessages]);
+    return () => unsubscribeFromMessages()
+  }, [selectedUser._id, getMessages, unsubscribeFromMessages])
 
+  if (isMessagesLoading) { 
+
+  }
+
+  // auto scroll down when a new message is sent 
   useEffect(() => {
     if (messageEndRef.current && messages) {
       messageEndRef.current.scrollIntoView({ behavior: "smooth" });
