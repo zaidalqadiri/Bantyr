@@ -1,5 +1,6 @@
-import User from "../models/user.model.js"
-import Message from "../models/message.model.js"
+import User from "../models/user.model.js";
+import Message from "../models/message.model.js";
+import cloudinary from "../lib/cloudinary.js";
 
 export const getUsersForSidebar = async (req, res) => {
     try {
@@ -18,11 +19,11 @@ export const getMessages = async (req, res) => {
         const { id:userToChatId } = req.params
         const myId = req.user._id;
         
-        // find all messages between sender and reciever and vice versa
+        // find all messages between sender and receiver and vice versa
         const messages = await Message.find({
             $or:[
-                {senderId:myId, recieverId:userToChatId},
-                {senderId:userToChatId, recieverId:myId}
+                {senderId:myId, receiverId: userToChatId},
+                {senderId:userToChatId, receiverId: myId}
             ]
         })
 
@@ -36,7 +37,7 @@ export const getMessages = async (req, res) => {
 export const sendMessage = async (req, res) => {
     try {
         const { text, image } = req.body;
-        const { id: recieverId } = req.params;
+        const { id: receiverId } = req.params;
         const senderId = req.user._id;
 
         let imageUrl;
@@ -48,7 +49,7 @@ export const sendMessage = async (req, res) => {
 
         const newMessage = new Message({
             senderId,
-            recieverId,
+            receiverId,
             text,
             image: imageUrl,
         });
@@ -60,7 +61,7 @@ export const sendMessage = async (req, res) => {
         res.status(201).json(newMessage)
 
     } catch (error) {
-        console.log("Error in sendMessage contorller: ", error.message);
+        console.log("Error in sendMessage controller: ", error.message);
         res.status(500).json({ error: "Internal server error" })
     }
 }
