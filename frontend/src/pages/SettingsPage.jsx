@@ -2,6 +2,11 @@ import React from 'react'
 import { useThemeStore } from '../store/useThemeStore'
 import { THEMES } from "../constants"
 
+const PREVIEW_MESSAGES = [
+  { id: 1, content: "Hey! How's it going?", isSent: false },
+  { id: 2, content: "I'm doing great! Just working on some new features.", isSent: true },
+];
+
 const SettingsPage = () => {
   const { theme, setTheme } = useThemeStore()
 
@@ -37,6 +42,10 @@ const SettingsPage = () => {
             </button>
           ))}
         </div>
+
+        {/* Preview Section */}
+        <h3 className="text-lg font-semibold mb-3">Preview</h3>
+
       </div> 
     </div>
   )
