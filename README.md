@@ -11,4 +11,13 @@ Bantyr is a full-stack real-time chat application with secure authentication, bu
 - **Custom themes**: Over 30 themes are available with the help of **DaisyUI**.
 - **Message history**: Ability to view past messages in a chat.
 
+## Screenshots
+### Login Page
+### Home Page
+### Settings Page
+### Theme Page
+### Some Available Themes
+### Signup Page
+
+
 link: https://chat-app-k0t3.onrender.com/
