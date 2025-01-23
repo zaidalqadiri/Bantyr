@@ -18,7 +18,7 @@ Bantyr is a full-stack real-time chat application with secure authentication, bu
 ![Alt text](images/Screenshot%202025-01-23%20001737.png)
 ### Profile Page
 ![Alt text](images/Screenshot%202025-01-23%20002438.png)
-### Theme Page
+### Settings Page
 ![Alt text](images/Screenshot%202025-01-23%20002452.png)
 ### Some Available Themes
 ![Alt text](images/Screenshot%202025-01-23%20002640.png)
